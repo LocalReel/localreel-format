@@ -1,0 +1,12 @@
+[package]
+name = "localreel-format"
+version = "0.1.0"
+edition = "2021"
+description = "Versioned data formats used by LocalReel (backup, artifacts, manifests)"
+publish = false
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
