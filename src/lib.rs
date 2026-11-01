@@ -199,7 +199,10 @@ impl std::fmt::Display for FormatError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             FormatError::UnsupportedBackupVersion(v) => {
-                write!(f, "unsupported backup version {v} (expected {BACKUP_FORMAT_VERSION})")
+                write!(
+                    f,
+                    "unsupported backup version {v} (expected {BACKUP_FORMAT_VERSION})"
+                )
             }
             FormatError::TooManySources(n) => {
                 write!(f, "too many sources: {n} (max {MAX_BACKUP_SOURCES})")
@@ -256,10 +259,7 @@ mod tests {
         assert!(!name.contains('/'));
         assert!(!name.contains('\\'));
         assert!(!name.contains(".."));
-        assert_eq!(
-            artifact_dir_name("uid", "h264"),
-            "hls_uid_h264".to_string()
-        );
+        assert_eq!(artifact_dir_name("uid", "h264"), "hls_uid_h264".to_string());
     }
 
     #[test]
