@@ -23,4 +23,4 @@ src/lib.rs   format types, validation, artifact naming
 
 ## License
 
-TBD by the repository owner.
+Apache-2.0 — see [`LICENSE`](LICENSE). Copyright 2026 LocalReel contributors.

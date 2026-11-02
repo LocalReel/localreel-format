@@ -2,6 +2,7 @@
 name = "localreel-format"
 version = "0.1.0"
 edition = "2021"
+license = "Apache-2.0"
 description = "Versioned data formats used by LocalReel (backup, artifacts, manifests)"
 publish = false
 
