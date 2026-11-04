@@ -1,49 +1,23 @@
-# localreel-format
+# localreel-format — archived
 
-Versioned data formats shared by the LocalReel crates.
+This crate has been merged into the server workspace as
+[`localreel-core/crates/localreel-format`](https://github.com/LocalReel/localreel-core/tree/main/crates/localreel-format).
 
-This crate has no I/O and no async runtime. It defines the JSON values and
-helpers that move between components:
+The backup/artifact schema is a leaf crate with no I/O, but it has no independent
+consumer: keeping it in a separate repository only added cross-repo path
+dependencies and release coordination. It now shares the core workspace version
+and its tests run with `cargo test --workspace`.
 
-- `Backup` — portable sources + playback state export (`version = 2`).
-- `ArtifactKind` and artifact name helpers — deterministic, filesystem-safe
-  names for generated thumbnails, transcodes and HLS packages.
-- `FormatError` — validation errors that callers map to API/CLI errors.
-
-## Layout
-
-```text
-src/lib.rs   format types, validation, artifact naming
-```
-
-## Versioning
-
-`Backup.version` is validated strictly. A new version requires a migration path
-in the consuming crate; an unknown version is never reinterpreted silently.
-
-## Where this fits
-
-This repository is a **component**: a leaf crate. Installers, downloads and the
-composed product live in the
-[`LocalReel`](https://github.com/LocalReel/LocalReel) product repository.
-
-## License
-
-Apache-2.0 — see [`LICENSE`](LICENSE). Copyright 2026 LocalReel contributors.
-
----
+This repository is kept read-only for history. Use the core repository for
+changes.
 
 ## 简体中文
 
-LocalReel 各组件共享的版本化数据格式。
+本仓库已归档：crate 已并入服务器仓库
+[`localreel-core/crates/localreel-format`](https://github.com/LocalReel/localreel-core/tree/main/crates/localreel-format)。
 
-本 crate 不做 I/O，也不依赖异步运行时，只定义组件之间传递的 JSON 结构与辅助
-函数：`Backup`（来源 + 播放状态的便携导出，`version = 2`）、`ArtifactKind`
-（缩略图、转码、HLS 产物的确定性文件名）与 `FormatError`（调用方映射为
-API/CLI 错误）。
+备份/产物格式是一个无 I/O 的叶子 crate，但没有独立消费者；单独成库只会增加跨仓库
+路径依赖与发布协调成本。现在它与 core 共享 workspace 版本，测试随
+`cargo test --workspace` 运行。
 
-`Backup.version` 严格校验：新版本必须在调用方提供迁移路径，未知版本不会被
-静默解释。
-
-本仓库是组件，产物（安装包、下载）在产品仓库
-[`LocalReel`](https://github.com/LocalReel/LocalReel)。
+本仓库只保留只读历史，后续修改请到 core 仓库。
